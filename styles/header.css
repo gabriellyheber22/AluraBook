@@ -1,0 +1,231 @@
+.cabeçalho__menu-hamburguer {
+    width: 24px;
+    height: 24px;
+    background-image: url(../icons/Menu.svg);
+    /*Colocou icone de menu como imagem de fundo */
+    background-repeat: no-repeat;
+    background-position: center;
+    display: inline-block;
+    /*Esta linha serve para permitir que seja informado a largura e altura do menu*/
+}
+.container__botao:checked~.container__rotulo>.cabeçalho__menu-hamburguer{
+    background-image: url(../icons/Menu_Aberto.svg);
+}
+.container__botao:checked~.container__rotulo{
+    background: var(--azul-degrade);
+}
+.lista-menu__item ~ .lista-menu__link:active{
+background:var(--azul-degrade);
+color: var(--branco-principal);
+}
+
+.cabeçalho {
+    background-color: var(--branco-principal);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+
+
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    
+
+}
+
+.container__imagem {
+    padding: 1em;
+}
+
+/*Criando o menu de hamburguer sem JS -- Estilizando o Menu*/
+
+.lista-menu {
+    display: none;
+    /*Como a lista só deve aparecer quando o menu for clicado, utilizasse o display none para fazer a lista desaparecer e não ocupar espaço nenhum*/
+    position: absolute;
+    top: 100%;
+    width: 60vw;
+}
+
+/*
+1- .container__botao: Seleciona o input
+2- :checked : É uma pseudoclasse que detecta que o checkbox esta preenchido, ou seja, o menu deve abrir
+3- ~ : Chamado de combinador, responsável por chamar o proximo elemento que vem em seguida, ou seja, a lista do menu
+4 - .lista-menu: O elemento que o ~ esta chamando
+5 - o display:block fara a lista aparecer novamente
+6 - .cabeçalho(pai):  positions: relative -->  Vai permitir colocar atributos como top, bottom, left e right.
+7 - .lista-menu(filho):  position: absolute; --> Permite mover a lista para de baixo do menu, porém isso só é possivel se o elemeno pai estiver diferente de ESTATICO, por esse motivo o pai virou relative
+8 - .lista-menu: top:100%--> Para ficar de baixo do menu
+*/
+
+.container__botao:checked~.lista-menu {
+
+    display: block;
+
+}
+
+.lista-menu__titulo,
+.lista-menu__item {
+    padding: 1em;
+    background-color: var(--branco-principal);
+    
+}
+
+.lista-menu__titulo {
+    color: var(--cor-botoes-e-titulos);
+    font-weight: 700;
+    box-shadow: 0px 8px 8px 0px rgba(0, 0, 0, 0.25);
+
+}
+
+.lista-menu__link {
+
+    background: var(--azul-degrade);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    /*Aplica a cor azul degrade na onde tem texto, ou seja, os itens do menu*/
+    text-transform: uppercase;
+
+}
+.lista-menu__item:hover {
+    background: var(--azul-degrade);
+
+}
+.lista-menu__item:hover .lista-menu__link{
+    -webkit-background-clip: inherit;
+    -webkit-text-fill-color: inherit;
+    background-clip: inherit;
+    color: #fff;
+    /* Branco novamente, mas use uma cor que lhe agrade */
+    background: none;
+    text-decoration: none;
+}
+
+.container__botao {
+    display: none;
+    /*Faz o check ficar invisivel*/
+}
+
+.container__titulo {
+    display: none;
+}
+
+.opções {
+    display: none;
+}
+
+.opções__botão {
+    display: none;
+}
+
+.container__texto--transparente {
+    display: none;
+}
+
+@media screen and (min-width: 1024px) {
+
+    .container__titulo,
+    .container__titulo--negrito {
+        font-family: var(--fonte-tablet);
+        font-size: 30px;
+    }
+
+    .container__titulo {
+        font-weight: 400;
+        display: block;
+    }
+
+    .container__titulo--negrito {
+        font-weight: 700;
+    }
+
+    .opções {
+        display: flex;
+        align-items: center;
+
+    }
+
+    .opções__item {
+        padding: 0em 1em;
+    }
+
+    .opções__link {
+        text-decoration: none;
+        color: var(--texto--preto);
+        font-weight: 400;
+    }
+
+    .cabeçalho__menu-hamburguer {
+        display: none;
+    }
+
+    .container__imagem--transparente {
+        display: none;
+    }
+
+    .opções__botão:checked~.lista-menu {
+        display: block;
+        width: auto;
+    }
+
+    .opções__botão {
+        display: none;
+    }
+
+    .opções__botão:checked~.opções__menu--label>.opções__item-titulo {
+        background: var(--azul-degrade);
+        /* Essa cor de fundo, é um azul que você pode trocar por outra cor de sua preferencia */
+        color: #fff;
+        /* Eu coloquei branco para dar um contraste com o fundo, mas use a cor que quiser */
+        padding: 1em;
+    }
+
+    .lista-menu__item:hover {
+        background: var(--azul-degrade);
+
+    }
+
+    .lista-menu__item:hover .lista-menu__link {
+        -webkit-background-clip: inherit;
+        -webkit-text-fill-color: inherit;
+        background-clip: inherit;
+        color: #fff;
+        /* Branco novamente, mas use uma cor que lhe agrade */
+        background: none;
+
+    }
+
+    .container__texto--transparente {
+        display: none;
+    }
+
+}
+
+@media screen and (min-width: 1728px) {
+    .container__link {
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        color: var(--texto--preto);
+    }
+
+    .container__texto--transparente {
+        display: block;
+    }
+
+    .cabeçalho {
+        padding: 0 3em;
+        ;
+    }
+    .container{
+        padding-right: 1em;
+    }
+
+    .opções {
+        margin-right: auto;
+    }
+}
